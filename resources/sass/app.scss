@@ -1,0 +1,36 @@
+@import "node_modules/font-awesome/scss/font-awesome.scss";
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+//Helpers
+@import 'helpers';
+
+//Styles
+@import 'styles';
+
+//Overrides
+@import 'overrides';
+
+//Products
+@import 'products';
+
+.navbar-laravel {
+	height: 69px;
+  	background-color: #fff;
+  	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.navbar-top {
+  	font-size: 12px;
+  	background-color: #fff;
+	border-bottom: 1px solid #ced4da;
+	z-index: 10;
+}
+
