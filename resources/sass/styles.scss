@@ -57,6 +57,20 @@ body {
 }
 
 .acc-name {
-	color: #6c757d; 
+	color: #6c757d;
 	text-transform: uppercase;
+}
+
+.cart-dropdown {
+    width: 322px;
+}
+
+.sfl-close {
+    display: none;
+}
+
+.sfl-row:hover .sfl-close {
+    background-color: whitesmoke;
+    cursor: pointer;
+    display: block;
 }

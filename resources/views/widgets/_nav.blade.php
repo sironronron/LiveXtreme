@@ -50,19 +50,37 @@
                                 @csrf
                             </form>
                         </div>
-
                     </li>
                 @endguest
-                
-                <li class="nav-item m-l-15">
-                    <a href="{{ route('cart.index') }}" class="text-secondary">
+
+                <li class="nav-item m-l-15 dropdown">
+                    <a id="cartDropDown" href="#" class="text-secondary" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         <div>
                             <small><span data-feather="shopping-cart" style="width: 20; height: 20"></span></small>
-                            @if (Cart::count() != 0)
+                            @if (Cart::instance()->count() != 0)
                                 <span class="cart-items-count"><span class="notification-counter">{{ Cart::instance()->count() }}</span></span>
                             @endif
                         </div>
                     </a>
+                    <div class="dropdown-menu dropdown-menu-right cart-dropdown" aria-labelledby="cartDropDown">
+                        <h6 class="m-l-5"><small>{{ Cart::instance()->count() }} Item(s) in your cart</small></h6>
+                        <div class="dropdown-divider"></div>
+                        @forelse (Cart::content() as $product)
+                            <a href="{!! route('store.show', ['id' => $product->id, 'slug' => $product->model['slug']]) !!}" class="dropdown-item">
+                                <div class="media">
+                                    <img src="{{ asset('storage/'. $product->model['image']) }}" height="50" width="50" class="thumbnail mr-3" alt="{{ $product->name }}">
+                                    <div class="media-body">
+                                        <h6 class="mt-0"><small><b>{{ $product->name }}</b></small></h6>
+                                        <h6><small>Php {{ number_format($product->price, 2) }}</small></h6>
+                                    </div>
+                                </div>
+                            </a>
+                        @empty
+                            <p class="text-center"><small>No Items On Your Cart!</small></p>
+                        @endforelse
+                        <div class="dropdown-divider"></div>
+                        <a href="{!! route('cart.index') !!}" class="float-right m-r-5"><small>Go To Cart</small></a>
+                    </div>
                 </li>
                 <li class="nav-item m-l-15 m-r-15 m-t-3">
                     <a href="#" class="text-secondary">
@@ -73,16 +91,16 @@
                     <a href="#" class="text-secondary">
                         Help <span data-feather="help-circle" style="width: 15; height: 15;"></span>
                     </a>
-                </li>         
+                </li>
             </ul>
         </div>
     </nav>
 
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel border-bottom">
         <a class="navbar-brand m-l-15" href="{{ url('/') }}">
-            LiveXtreme 
+            LiveXtreme
         </a>
-        
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>

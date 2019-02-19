@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <meta name="title" content="@yield('title')">
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')">
@@ -51,12 +51,16 @@
         @include('widgets._footer')
     </div>
     @include('widgets._loginModal')
+    @include('widgets._messages')
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 {{--     <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" charset="utf-8"></script>
     <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" charset="utf-8"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     @yield('scripts')
     <script type="text/javascript">
+        $(document).ready(function() {
+            $('.toast').toast('show')
+        });
         feather.replace();
     </script>
 </body>

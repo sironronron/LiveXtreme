@@ -9,16 +9,20 @@
     background-color: white;
 }
 
-.img-product {
-	height: 320px !important; 
+.cart-img {
+	height: 100px !important;
+	width: 100px !important;
+}
 
+.img-product {
+	height: 320px !important;
     background-size: cover;
     object-fit: cover;
 }
 
 .img-product-2 {
-    height: 190px !important; 
- 
+    height: 190px !important;
+
     background-size: cover;
     object-fit: cover;
 }
@@ -90,7 +94,7 @@
     top:-24px;
 }
 
-.notification-counter {   
+.notification-counter {
     position: absolute;
     left: 14px;
     background-color: rgba(212, 19, 13, 1);
@@ -152,4 +156,3 @@
 }
 @media only screen and (max-width:359px){.product-grid3 .rating{margin:0}
 }
-

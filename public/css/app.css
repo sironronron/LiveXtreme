@@ -15972,6 +15972,20 @@ body {
   text-transform: uppercase;
 }
 
+.cart-dropdown {
+  width: 322px;
+}
+
+.sfl-close {
+  display: none;
+}
+
+.sfl-row:hover .sfl-close {
+  background-color: whitesmoke;
+  cursor: pointer;
+  display: block;
+}
+
 @media (min-width: 1200px) {
   .container {
     max-width: 1250px;
@@ -16116,6 +16130,22 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+input {
+  font-size: 13px !important;
+}
+
+.form-control-lg {
+  border-radius: 0;
+}
+
+.custom-select-lg {
+  font-size: 13px;
+}
+
+.custom-select {
+  border-radius: 0;
+}
+
 a {
   color: #000;
 }
@@ -16125,7 +16155,7 @@ button:focus {
 }
 
 .toast {
-  z-index: 1000;
+  z-index: 10000;
 }
 
 .pr-card a {
@@ -16137,6 +16167,11 @@ button:focus {
 .pr-thumbnail {
   padding: 0.25rem;
   background-color: white;
+}
+
+.cart-img {
+  height: 100px !important;
+  width: 100px !important;
 }
 
 .img-product {

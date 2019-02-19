@@ -58,12 +58,12 @@
 					</div>
 				</div>
 				<div class="add-to-cart m-t-30">
-					<form>
+					<form action="{!! route('add-to-cart') !!}" method="POST">
 						{{ method_field('POST') }}
 						{{ csrf_field() }}
 						<input type="hidden" name='id' value="{{ $product->id }}">
 						<input type="hidden" name='name' value="{{ $product->name }}">
-						<input type="hidden" name='price' value="{{ $product->price }}">
+						<input type="hidden" name='price' value="{{ $product->discount != 0 ? $totalPrice : $product->price }}">
 						<button type="submit" class="btn btn-dark btn-lg btn-block btn-submit"><small>Add to Cart</small></button>
 					</form>
 					<br>
@@ -161,47 +161,5 @@
 		</div>
 	</div>
 </div>
-
-@include('widgets._toast')
-
-@endsection
-
-@section('scripts')
-
-<script type="text/javascript">
-    $(document).ready(function() {
-    	$.ajaxSetup({
-	        headers: {
-	            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-	        }
-	    });
-
-	    $(".btn-submit").click(function(e){
-
-    		e.preventDefault();
-
-	        var id = $("input[name='id']").val();
-	        var name = $("input[name='name']").val();
-	        var price = $("input[name='price']").val();
-
-	        $.ajax({
-	        	method: 'POST',
-	        	url: '{{ route('add-to-cart') }}',
-	        	dataType: 'JSON',
-	        	data: {
-	        		'id':id, 
-	        		'name':name, 
-	        		'price':price
-	        	},
-	        	success: function (data) {
-	               $('.toast').toast('show')
-	        	},
-	        	fail: function (data) {
-	        		$('#failedToast').toast('show')
-	        	},
-	        });
-		});
-    });
-</script>
 
 @endsection

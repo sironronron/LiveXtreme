@@ -1,30 +1,59 @@
 @if (Session::has('success'))
-    <div class="alert alert-dark" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        {{ Session::get('success') }}
-    </div>
+    <div style="position: absolute; top: 150px; right: 18px; width: 26%; position: fixed;">
+    	<!-- Then put toasts within -->
+    	<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="6000">
+      		<div class="toast-header">
+	        	<span class="text-dark mr-auto">Success!</span>
+	        	<small class="text-muted">just now</small>
+	        	<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+	          		<span aria-hidden="true">&times;</span>
+	        	</button>
+	     	</div>
+	      	<div class="toast-body">
+	        	{{ Session::get('success') }}
+	      	</div>
+    	</div>
+  	</div>
 @endif
 
 @if (count($errors) > 0)
-    <div class="alert alert-danger" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <ul class="list-unstyled">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+    <!-- Position it -->
+   <div style="position: absolute; top: 150px; right: 18px; width: 26%; position: fixed;">
+       <!-- Then put toasts within -->
+       <div class="toast" id="failedToast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="6000">
+           <div class="toast-header">
+               <span class="text-dark mr-auto">Error!</span>
+               <small class="text-muted">just now</small>
+               <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+               </button>
+           </div>
+           <div class="toast-body">
+               <ul class="list-unstyled">
+                   @foreach ($errors->all() as $error)
+                       <li>{{ $error }}</li>
+                   @endforeach
+               </ul>
+           </div>
+       </div>
+   </div>
 @endif
 
 @if (Session::has('warning'))
-    <div class="alert alert-warning" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        {{ Session::get('warning') }}
-    </div>
+    <div style="position: absolute; top: 150px; right: 18px; width: 26%; position: fixed;">
+    	<!-- Then put toasts within -->
+    	<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="6000">
+      		<div class="toast-header">
+	        	<span class="text-dark mr-auto">Warning</span>
+	        	<small class="text-muted">just now</small>
+	        	<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+	          		<span aria-hidden="true">&times;</span>
+	        	</button>
+	     	</div>
+	      	<div class="toast-body">
+	        	{{ Session::get('warning') }}
+	      	</div>
+    	</div>
+  	</div>
+
 @endif
