@@ -24,7 +24,10 @@ class CheckoutController extends Controller
     public function index()
     {
         $categories = ProductCategory::get();
-        return view('cart.checkout.index', compact('categories'));
+        $address = AddressBook::where('user_id', Auth::user()->id)
+            ->where('default', 1)
+            ->first();
+        return view('cart.checkout.index', compact('categories', 'address'));
     }
 
     /**

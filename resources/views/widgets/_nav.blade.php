@@ -1,29 +1,6 @@
 <div id="snav" class="fixed-top">
     <nav class="navbar navbar-expand-md navbar-light navbar-top">
         <div class="collapse navbar-collapse m-l-15 m-r-15">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a href="#">
-                        <img src="{{ asset('images/logo/aus.svg') }}" width="20" alt="ausFlag">
-                    </a>
-                </li>
-                <li class="nav-item block m-l-15 m-r-15">
-                    <span class=""></span>
-                </li>
-                 <li class="nav-item">
-                    <a href="#">
-                        <img src="{{ asset('images/logo/phFlag.svg') }}" width="20" alt="phflag">
-                    </a>
-                </li>
-                <li class="nav-item block m-l-15 m-r-15">
-                    <span class=""></span>
-                </li>
-                <li class="nav-item">
-                    <a href="#">
-                        <img src="{{ asset('images/logo/cn.svg') }}" width="20" alt="chinaFlag">
-                    </a>
-                </li>
-            </ul>
             <ul class="navbar-nav ml-auto">
                 @guest
                     <li class="nav-item m-t-3">

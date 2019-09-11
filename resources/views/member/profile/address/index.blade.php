@@ -28,7 +28,6 @@
 			</div>
 
             <div class="address m-t-30">
-                @include('widgets._messages')
                 <div class="row">
                     @foreach ($addresses as $address)
                     <div class="col-5">

@@ -9,53 +9,43 @@
 @section('content')
 
 <div class="container m-t-150">
-    <h5 class="text-center m-b-30"><b>CART CHECKOUT</b></h5>
-    <form action="{!! route('checkout.store') !!}" data-parsley-validate="" method="post">
+    <h5 class="text-center m-b-30">CART CHECKOUT</h5>
         {{ csrf_field() }}
         <div class="row">
             <div class="col">
-                <div class="form-group">
-                    <label for="billing_name" class="col-form-label">Full Name</label>
-                    <input type="text" name="billing_name" class="form-control form-control-lg" placeholder="Enter your Fullname" required>
-                </div>
-                <div class="form-group">
-                    <label for="billing_email" class="col-form-label">Email</label>
-                    <input type="text" name="billing_email" class="form-control form-control-lg" placeholder="E-mail Address" required>
-                </div>
-                <div class="form-group">
-                    <label for="billing_address" class="col-form-label">Address</label>
-                    <input type="text" name="billing_address" class="form-control form-control-lg" placeholder="Full Address" required>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="billing_city" class="col-form-label">City</label>
-                            <input type="text" name="billing_city" class="form-control form-control-lg" placeholder="City" required>
+                <h6>Delivery Address</h6>
+                @if ($address != null)
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <p>
+                                        <strong>
+                                        {{ $address->firstname }} {{ $address->lastname }}
+                                        </strong>
+                                        <span class="float-right"><i class="fa fa-check-circle text-success fa-lg"></i></span>
+                                    </p>
+                                    <h6><small>{{ $address->address1 }}</small></h6>
+                                    <h6><small>{{ $address->country }} - {{ $address->city }} - {{ $address->state }} - {{ $address->zipCode }}</small></h6>
+                                    <h6><small>{{ '(+63) '. $address->telNo }}</small></h6>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="billing_province" class="col-form-label">Province</label>
-                            <input type="text" name="billing_province" class="form-control form-control-lg" placeholder="Province" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="billing_city" class="col-form-label">Phone</label>
-                            <input type="text" name="billing_phone" class="form-control form-control-lg" placeholder="Phone" required>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="billing_province" class="col-form-label">Postal Code</label>
-                            <input type="text" name="billing_province" class="form-control form-control-lg" placeholder="Postal Code" required>
-                        </div>
-                    </div>
-                </div>
+                @else
+                    <a href="{{ route('address.create') }}">Add Address</a>
+                @endif
                 <hr>
-                <h5 class="text-secondary"><b>Payment Method</b></h5>
+				<h5 class="text-secondary">Payment Method</h5>
+				<form class="w3-container w3-display-middle w3-card-4 " method="POST" id="payment-form"  action="{{ route('paywithpaypal') }}">
+					{{ csrf_field() }}
+					<h2 class="w3-text-blue">Payment Form</h2>
+					<p>Demo PayPal form - Integrating paypal in laravel</p>
+					<p>      
+					<label class="w3-text-blue"><b>Enter Amount</b></label>
+					<input class="w3-input w3-border" name="amount" type="text"></p>      
+					<button class="w3-btn w3-blue">Pay with PayPal</button></p>
+				  </form>
             </div>
             <div class="col-5">
                 <div class="cart">
@@ -78,7 +68,6 @@
                 <input type="text" name="coupon" class="form-control form-control-lg" placeholder="Coupon">
                 <hr>
                 <div class="price-total">
-                    <div id="paypal-button"></div>
                     <ul class="list-unstyled">
                         <li class="m-b-10 text-secondary">Subtotal <span class="text-dark float-right">{{ 'Php '.Cart::subtotal() }}</span></li>
                         <li class="m-b-10 text-secondary">Shipping <span class="text-dark float-right">--</span></li>
@@ -91,55 +80,12 @@
                 </div>
             </div>
         </div>
-    </form>
 
 </div>
 
 @section('scripts')
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 <script src="{{ asset('/js/parsley.min.js') }}"></script>
-
-<script src="https://www.paypalobjects.com/api/checkout.js"></script>
-<script>
-  paypal.Button.render({
-    // Configure environment
-    env: 'sandbox',
-    client: {
-      sandbox: 'AVcWH5znVI63VthWq51rtT99I8kVC3gjZSkz89WC3u4odBlXXwxaoeqFXiR8ID910WIh-UEDYH491ymF',
-      production: 'demo_production_client_id'
-    },
-    // Customize button (optional)
-    locale: 'en_US',
-    style: {
-      size: 'small',
-      color: 'gold',
-      shape: 'pill',
-    },
-
-    // Enable Pay Now checkout flow (optional)
-    commit: true,
-
-    // Set up a payment
-    payment: function(data, actions) {
-      return actions.payment.create({
-        transactions: [{
-          amount: {
-            total: '0.01',
-            currency: 'USD'
-          }
-        }]
-      });
-    },
-    // Execute the payment
-    onAuthorize: function(data, actions) {
-      return actions.payment.execute().then(function() {
-        // Show a confirmation message to the buyer
-        window.alert('Thank you for your purchase!');
-      });
-    }
-  }, '#paypal-button');
-
-</script>
 @endsection
 
 @endsection

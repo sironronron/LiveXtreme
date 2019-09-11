@@ -70,3 +70,7 @@ Route::resource('/cart/checkout', 'CheckoutController');
 Route::get('empty', function() {
 	Cart::destroy();
 });
+
+Route::post('/payment/add-funds/paypal', 'Payment\PaymentController@payWithpaypal')->name('paywithpaypal');
+// route for check status of the payment
+Route::get('status', 'Payment\PaymentController@getPaymentStatus')->name('status');

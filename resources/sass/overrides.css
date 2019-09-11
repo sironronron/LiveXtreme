@@ -1,0 +1,140 @@
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1250px;
+  }
+}
+@media (max-width: 1366px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+.img-thumbnail {
+  padding: 0.25rem;
+  background-color: whitesmoke;
+  max-width: 100%;
+  border: 0;
+  border-radius: 0;
+  background-position: center center;
+  background-size: cover;
+  object-fit: cover;
+}
+.img-fluid {
+  background-position: center center;
+  background-size: cover;
+  object-fit: cover;
+}
+.rounded-circle {
+  background-position: center center;
+  background-size: cover;
+  object-fit: cover;
+  border: solid #000 1px;
+}
+.card .card-body {
+  border: 0 !important;
+}
+.search-button {
+  border-radius: 0;
+  border-left: 0;
+  border-color: #ced4da;
+}
+.form-search-input {
+  border-right: 0;
+  border-radius: 0;
+}
+.form-control:focus {
+  border-color: #cccccc;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.custom-select:focus {
+  border-color: #cccccc;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.btn {
+  border-radius: 0;
+}
+#collapseButton[aria-expanded="false"]:before {
+  content: "Read more...";
+}
+#collapseButton[aria-expanded="true"]:before {
+  content: "Show less";
+}
+#showReviews {
+  margin-bottom: 0 !important;
+}
+#showReviews[aria-expanded="false"]:before {
+  content: "\2B9B";
+}
+#showReviews[aria-expanded="true"]:before {
+  content: "\2B99";
+}
+.page-item.active .page-link {
+  background-color: #343a40;
+  border-color: #343a40;
+}
+.card {
+  border: 0 !important;
+}
+.bg-grey {
+  background-color: #eeeeee;
+}
+.full-width.dropdown {
+  position: static;
+}
+.full-width.dropdown > .dropdown-menu {
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+.full-width.dropdown > .dropdown-menu > li > a {
+  white-space: normal;
+}
+.dropdown-toggle::after {
+  display: none;
+}
+.cat-dropdown {
+  height: 15.5rem;
+  text-align: none;
+  border-radius: 0;
+  margin: 0;
+  border: 0;
+}
+.dropdown-cat-item {
+  padding: 6px 0;
+}
+.dropdown-cat-item:hover,
+.dropdown-cat-item:focus {
+  color: #16181b;
+  text-decoration: underline;
+  background-color: white;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input {
+  font-size: 13px !important;
+}
+.form-control-lg {
+  border-radius: 0;
+}
+.custom-select-lg {
+  font-size: 13px;
+}
+.custom-select {
+  border-radius: 0;
+}
+a {
+  color: #000;
+}
+button:focus {
+  outline: 0;
+}
+.toast {
+  z-index: 10000;
+}
+.input-group > .form-control {
+  height: inherit;
+}

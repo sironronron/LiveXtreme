@@ -166,3 +166,7 @@ button:focus {
 .toast {
     z-index: 10000;
 }
+
+.input-group > .form-control {
+    height: inherit;
+}

@@ -28,7 +28,9 @@ class HomeController extends Controller
     {
         $randomCollection = Product::inRandomOrder()->where('live', 1)->take(8)->get();
         $date = Carbon::now();
-        $latests = Product::whereDate('created_at', $date)->where('live', 1)->take(8)->get();
+        $latests = Product::whereDate('created_at', $date)
+            ->orderBy('created_at', 'desc')
+            ->where('live', 1)->take(8)->get();
         $categories = ProductCategory::get();
         $girlPower = Product::where('live' ,1)->where('cat_id', 2)->take(8)->get();
         return view('home', compact('randomCollection', 'categories', 'latests', 'girlPower'));

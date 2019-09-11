@@ -21,7 +21,7 @@ class AddressBookController extends Controller
     public function create()
     {
         $categories = ProductCategory::get();
-        $countries = Country::pluck('country_name', 'country_code');
+        $countries = Country::pluck('name', 'id');
         return view('member.profile.address.create', compact('categories', 'countries'));
     }
 
@@ -60,7 +60,7 @@ class AddressBookController extends Controller
     public function edit($id)
     {
         $categories = ProductCategory::get();
-        $countries = Country::pluck('country_name', 'country_code');
+        $countries = Country::pluck('name', 'id');
         $address = AddressBook::where('user_id', Auth::user()->id)->where('id', $id)->firstOrFail();
         return view('member.profile.address.edit', compact('categories', 'countries', 'address'));
     }

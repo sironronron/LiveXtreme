@@ -10,7 +10,7 @@
 <div class="container m-t-150 m-b-50">
     
     <div class="text-center">
-        <h3 class="m-t-30"><b>LiveXtreme</b></h3>
+        <h3 class="m-t-30">LiveXtreme</h3>
     </div>
 
     <div class="row justify-content-center m-t-30">

@@ -5,8 +5,7 @@
 @section('content')
 
 	<div class="container m-t-150">
-		<h5 class="text-center m-b-30"><b>SHOPPING CART</b></h5>
-		@include('widgets._messages')
+		<h5 class="text-center m-b-30">SHOPPING CART</h5>
 		@if(Cart::count() != null)
 			<table class="table table-bordered table-hoverable">
 			  	<thead class="thead-dark">
@@ -68,9 +67,7 @@
 						<th>
 							TOTAL
 							<span class="float-right">
-								<b>
-									Php {{ Cart::total() }}
-								</b>
+								Php {{ Cart::total() }}
 							</span>
 						</th>
 					</tr>

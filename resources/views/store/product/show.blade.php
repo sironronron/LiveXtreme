@@ -6,16 +6,12 @@
 
 <div class="container-fluid m-t-150">
 	<div class="row">
-		<div class="col-sm-6 offset-sm-1">
+		<div class="col-lg-6 offset-lg-1">
 			<div class="row">
 				@if ($product->images)
 					@foreach (json_decode($product->images, true) as $image)
 						@if (count(json_decode($product->images)) != 1)
-							<div class="col-5 col-img m-b-1">
-								<img src="{{ asset('storage/'.$image) }}" class="pr-thumbnail img-fluid" alt="{{ $product->name }}">
-							</div>
-						@else
-							<div class="col text-center">
+							<div class="col-lg-6 col-img">
 								<img src="{{ asset('storage/'.$image) }}" class="pr-thumbnail img-fluid" alt="{{ $product->name }}">
 							</div>
 						@endif
@@ -23,7 +19,7 @@
 				@endif
 			</div>
 		</div>
-		<div class="col-4">
+		<div class="col-lg-4">
 			<div class="product-details">
 				@if($product->created_at->format('Y-m-d 00:00:00') == \Carbon\Carbon::today())
 					<span class="badge badge-dark m-b-10">New Item!</span>
@@ -72,8 +68,8 @@
 				<div class="details m-t-50 text-justify">
 					{{ $product->details }}
 				</div>
-				<div class="collapse description m-t-30 text-justify" id="descriptionCollapse">
-					{!! $product->description !!}
+				<div class="collapse description m-t-30" id="descriptionCollapse">
+					<p>{!! $product->description !!}</p>
 				</div>
 				<a class="text-primary" id="collapseButton" data-toggle="collapse" href="#descriptionCollapse" role="button" aria-expanded="false" aria-controls="collapseExample"></a>
 
@@ -123,9 +119,9 @@
 			</div>
 		</div>
 	</div>
-
+	<hr>
 	<div class="might-like m-t-50 m-l-15 m-r-15">
-		<h4 class="main-title text-center m-b-30"><strong>YOU MIGHT LIKE</strong></h4>
+		<h4 class="main-title text-center m-b-30">YOU MIGHT LIKE</h4>
 		<div class="row">
 			@foreach ($mightLikeProducts as $mightProd)
 				<div class="col-2 m-b-15">
